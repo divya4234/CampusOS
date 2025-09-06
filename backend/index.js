@@ -2,13 +2,7 @@ import { connectDB } from './src/config/db.js';
 import app from './src/server.js';
 import dotenv from "dotenv";
 dotenv.config();
-// Root route
-app.get('/', (req, res) => {
-  res.send('Backend is running 🚀');
-});
 
-// Optional: ignore favicon requests
-app.get('/favicon.ico', (req, res) => res.status(204));
 
 
 const PORT = process.env.PORT || 4000;
