@@ -6,13 +6,42 @@ export function teacherService(req) {
 
   return {
     list: () => s.find(),
-    get: (id) => s.findOne({ _id: id }),
+    
+    getById: (id) => s.findOne({ _id: id }),
+    
     create: async (data) => {
       const teacher = new Teacher({ ...data, collegeId: req.tenantId });
-      await teacher.setPassword(data.password);
+      if (data.password) {
+        await teacher.setPassword(data.password);
+      }
       return teacher.save();
     },
-    update: (id, data) => s.updateOne({ _id: id }, { $set: data }),
-    remove: (id) => s.deleteOne({ _id: id })
+    
+    update: async (id, data) => {
+      const updateData = { ...data };
+      if (data.password) {
+        const teacher = new Teacher();
+        await teacher.setPassword(data.password);
+        updateData.passwordHash = teacher.passwordHash;
+        delete updateData.password;
+      }
+      return s.findOneAndUpdate(
+        { _id: id },
+        { $set: updateData },
+        { new: true }
+      );
+    },
+    
+    delete: (id) => s.findOneAndDelete({ _id: id }),
+    
+    listByDepartment: (department) => s.find({ department }),
+    
+    updateStatus: (id, status) => s.findOneAndUpdate(
+      { _id: id },
+      { $set: { status } },
+      { new: true }
+    )
   };
 }
+
+

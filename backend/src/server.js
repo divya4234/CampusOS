@@ -7,12 +7,18 @@ import { notFound, onError } from './middleware/errors.js';
 import { authRequired, tenantFromHeader } from "./middleware/auth.js";
 import Admin from "./models/Admin.js";
 import { createCollegeWithAdmin } from "./services/college.service.js";
+import dashboardRoutes from "./routes/dashboard.routes.js";
+import collegeRoutes from "./routes/college.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import teacherRoutes from "./routes/teacher.routes.js";
+import studentRoutes from "./routes/student.routes.js";
 
 const app = express();
 //testing
 app.get("/test-tenant", tenantFromHeader, (req, res) => {
   res.json({ tenantId: req.tenantId });
 });
+app.use("/api/dashboard", dashboardRoutes);
 
 app.post("/test-create-admin", async (req, res) => {
   try {
@@ -57,11 +63,6 @@ app.get('/health', (_req, res) => {
 });
 
 // Routes
-import collegeRoutes from "./routes/college.routes.js";
-import authRoutes from "./routes/auth.routes.js";
-import teacherRoutes from "./routes/teacher.routes.js";
-import studentRoutes from "./routes/student.routes.js";
-
 app.use("/api/colleges", collegeRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/teachers", teacherRoutes);
