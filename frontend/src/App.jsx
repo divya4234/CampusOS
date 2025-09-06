@@ -1,15 +1,11 @@
 import React from 'react'
-import './App.css'
-import AppRouter from './routes/AppRouter'
-import Loading from './components/Loading/loading.jsx';
-import HomePage from './pages/Landing/HomePage.jsx';
+import './index.css'
+import AppRouter from './routes/AppRouter.jsx';
 
 function App() {
- 
-  
   return (
-    <div className="min-h-screen w-screen">
-      <HomePage />
+    <div className="App">
+      <AppRouter />
     </div>
   )
 }
