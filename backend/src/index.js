@@ -1,5 +1,6 @@
-import { connectDB } from './src/config/db.js';
-import app from './backend/src/server.js';
+import { connectDB } from './config/db.js';
+import app from './server.js';
+
 
 const PORT = process.env.PORT || 4000;
 

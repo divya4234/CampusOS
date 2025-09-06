@@ -2,7 +2,7 @@
   "name": "campusos-backend",
   "version": "1.0.0",
   "description": "Backend for CampusOS",
-  "main": "server.js",
+  "main": "src/index.js",
   "scripts": {
     "dev": "nodemon --env-file=.env src/index.js",
     "start": "node src/index.js",
