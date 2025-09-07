@@ -17,14 +17,19 @@ export function authRequired(req, res, next) {
   }
 }
 
-export function requireRole(role) {
+export function requireRole(roles) {
   return (req, res, next) => {
-    if (req.user?.role !== role) {
+    const userRole = req.user?.role?.toLowerCase();
+    const allowedRoles = Array.isArray(roles) ? roles.map(r => r.toLowerCase()) : [roles.toLowerCase()];
+
+    if (!userRole || !allowedRoles.includes(userRole)) {
       return res.status(403).json({ error: "Forbidden: Insufficient role" });
     }
     next();
   };
 }
+
+
 
 // Allow bootstrap with admin key
 export function systemKey(req, res, next) {

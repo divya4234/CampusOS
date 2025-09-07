@@ -8,6 +8,7 @@ import { authRequired, tenantFromHeader } from "./src/middleware/auth.js";
 import Admin from "./src/models/Admin.js";
 import { createCollegeWithAdmin } from "./src/services/college.service.js";
 
+
 const app = express();
 
 // Root route for browser visits
@@ -72,11 +73,16 @@ import collegeRoutes from "./src/routes/college.routes.js";
 import authRoutes from "./src/routes/auth.routes.js";
 import teacherRoutes from "./src/routes/teacher.routes.js";
 import studentRoutes from "./src/routes/student.routes.js";
+import feeRoutes from "./src/routes/fee.routes.js";
+import paymentRoutes from "./src/routes/payment.routes.js";
 
 app.use("/api/colleges", collegeRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/teachers", teacherRoutes);
 app.use("/api/students", studentRoutes);
+
+app.use("/api", authRequired, feeRoutes);
+app.use("/api", authRequired, paymentRoutes);
 
 
 // Error handling
