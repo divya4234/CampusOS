@@ -12,6 +12,10 @@ import collegeRoutes from "./routes/college.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import teacherRoutes from "./routes/teacher.routes.js";
 import studentRoutes from "./routes/student.routes.js";
+import attendanceRoutes from "./routes/attendance.routes.js";
+import gradeRoutes from "./routes/grade.routes.js";
+import libraryRoutes from "./routes/library.routes.js";
+import hostelRoutes from "./routes/hostel.routes.js";
 
 const app = express();
 
@@ -32,6 +36,14 @@ app.use("/api/colleges", collegeRoutes);
 app.use("/api/teachers", teacherRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+
+// Academic Management Routes
+app.use("/api", attendanceRoutes);
+app.use("/api", gradeRoutes);
+app.use("/api", libraryRoutes);
+
+// Hostel Management Routes
+app.use("/api", hostelRoutes);
 
 // Development-only routes
 if (process.env.NODE_ENV === 'development') {
