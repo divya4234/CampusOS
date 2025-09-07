@@ -15,7 +15,6 @@
 - **Multi-tenant Architecture**: Support for multiple colleges with complete data isolation
 - **Role-Based Access Control**: Granular permissions for Admin, Faculty, and Students
 - **Modern Tech Stack**: MERN Stack with TypeScript and modern development practices
-- **Real-time Updates**: WebSocket integration for live notifications
 - **AI Integration**: ChatGPT-powered student support system
 - **Microservices Ready**: Designed for scalability and maintainability
 
@@ -162,9 +161,8 @@ CampusOS provides:
 ### Prerequisites
 
 - Node.js >= 16
-- MongoDB >= 4.4
 - npm or yarn
-- Docker (optional)
+- Git
 
 ### Quick Start
 
@@ -172,12 +170,55 @@ CampusOS provides:
 # Clone repository
 git clone https://github.com/vinit-codes/CampusOS
 
-# Install dependencies
-cd CampusOS
+# Frontend Setup
+cd CampusOS/frontend
 npm install
-
-# Start development servers
 npm run dev
+
+# Backend Setup
+cd ../backend
+npm install
+npm run dev
+```
+
+## 🌐 Deployment
+
+### Frontend Deployment (Vercel)
+
+- Automatic deployments from main branch
+- Production URL: [https://campus-os.vercel.app](https://campus-os.vercel.app)
+- Environment Variables:
+  ```env
+  VITE_API_URL=https://campusos-api.up.railway.app
+  ```
+
+### Backend Deployment (Railway)
+
+- Continuous deployment from main branch
+- API URL: [https://campusos-api.up.railway.app](https://campusos-api.up.railway.app)
+- Environment Variables:
+  ```env
+  PORT=4000
+  MONGO_URI=mongodb+srv://<username>:<password>@<aws-cluster>.mongodb.net
+  JWT_SECRET=your_jwt_secret
+  NODE_ENV=production
+  ```
+
+### Database (MongoDB AWS)
+
+- Production Database: AWS-hosted MongoDB
+- Multi-region deployment
+- Automated backups
+- Monitoring and alerts
+
+### Infrastructure Overview
+
+```mermaid
+graph TD
+    A[Frontend - Vercel] --> B[Backend API - Railway]
+    B --> C[MongoDB - AWS]
+    D[CI/CD Pipeline] --> A
+    D --> B
 ```
 
 ## 📚 Documentation
