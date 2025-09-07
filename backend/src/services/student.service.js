@@ -42,6 +42,8 @@ export function studentService(req) {
 
     listByDepartment: (department) => s.find({ department }),
 
+    listByYear: (year) => s.find({ year: Number(year) }),
+
     updateYear: async (id, year) => {
       return Student.findOneAndUpdate(
         { _id: id, collegeId: req.tenantId },
