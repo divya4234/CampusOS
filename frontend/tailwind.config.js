@@ -21,6 +21,11 @@ export default {
         danger: "var(--color-danger)",
         success: "var(--color-success)",
       },
+      fontFamily: {
+        'heading': ['Montserrat', 'sans-serif'],
+        'secondary': ['Playfair Display', 'serif'],
+        'body': ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],

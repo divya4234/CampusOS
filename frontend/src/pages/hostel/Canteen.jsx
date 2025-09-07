@@ -115,9 +115,9 @@ const Canteen = () => {
   const getMealTypeColor = (type) => {
     switch (type) {
       case 'veg':
-        return 'bg-success text-white';
+        return 'bg-[#22C55E] text-white';
       case 'non-veg':
-        return 'bg-danger text-white';
+        return 'bg-[#EF4444] text-white';
       default:
         return 'bg-slate-500 text-white';
     }
@@ -137,7 +137,7 @@ const Canteen = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-200 to-slate-300 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#6366F1] mx-auto mb-4"></div>
           <p className="text-slate-600">Loading canteen data...</p>
         </div>
       </div>
@@ -149,10 +149,10 @@ const Canteen = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-800 mb-2 heading-font">
+          <h1 className="text-3xl font-bold text-slate-800 mb-2 font-heading heading-font">
             {user?.name}'s Canteen Management
           </h1>
-          <p className="text-slate-600">
+          <p className="text-slate-600 font-body roboto-font">
             Manage your meal preferences and track monthly expenses
           </p>
         </div>
@@ -162,10 +162,10 @@ const Canteen = () => {
           <div className="bg-white rounded-2xl p-6 shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-600 text-sm font-medium">Monthly Bill</p>
-                <p className="text-2xl font-bold text-primary">₹{monthlyBill.totalAmount}</p>
+                <p className="text-slate-600 text-sm font-medium roboto-font">Monthly Bill</p>
+                <p className="text-2xl font-bold text-[#6366F1] roboto-font">₹{monthlyBill.totalAmount}</p>
               </div>
-              <div className="bg-primary p-3 rounded-xl text-white text-2xl">
+              <div className="bg-[#6366F1] p-3 rounded-xl text-white text-2xl">
                 💰
               </div>
             </div>
@@ -175,7 +175,7 @@ const Canteen = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-slate-600 text-sm font-medium">Meals This Month</p>
-                <p className="text-2xl font-bold text-success">
+                <p className="text-2xl font-bold text-[#22C55E]">
                   {monthlyBill.breakdown?.breakfast.count + 
                    monthlyBill.breakdown?.lunch.veg.count + 
                    monthlyBill.breakdown?.lunch.nonVeg.count +
@@ -183,7 +183,7 @@ const Canteen = () => {
                    monthlyBill.breakdown?.dinner.nonVeg.count}
                 </p>
               </div>
-              <div className="bg-success p-3 rounded-xl text-white text-2xl">
+              <div className="bg-[#22C55E] p-3 rounded-xl text-white text-2xl">
                 🍽️
               </div>
             </div>
@@ -193,11 +193,11 @@ const Canteen = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-slate-600 text-sm font-medium">Avg Daily Cost</p>
-                <p className="text-2xl font-bold text-secondary">
+                <p className="text-2xl font-bold text-[#14B8A6]">
                   ₹{Math.round(monthlyBill.totalAmount / monthlyBill.daysInMonth)}
                 </p>
               </div>
-              <div className="bg-secondary p-3 rounded-xl text-white text-2xl">
+              <div className="bg-[#14B8A6] p-3 rounded-xl text-white text-2xl">
                 📊
               </div>
             </div>
@@ -207,11 +207,11 @@ const Canteen = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-slate-600 text-sm font-medium">Payment Status</p>
-                <p className={`text-lg font-bold ${monthlyBill.paidStatus ? 'text-success' : 'text-danger'}`}>
+                <p className={`text-lg font-bold ${monthlyBill.paidStatus ? 'text-[#22C55E]' : 'text-[#EF4444]'}`}>
                   {monthlyBill.paidStatus ? 'Paid' : 'Pending'}
                 </p>
               </div>
-              <div className={`p-3 rounded-xl text-white text-2xl ${monthlyBill.paidStatus ? 'bg-success' : 'bg-danger'}`}>
+              <div className={`p-3 rounded-xl text-white text-2xl ${monthlyBill.paidStatus ? 'bg-[#22C55E]' : 'bg-[#EF4444]'}`}>
                 {monthlyBill.paidStatus ? '✅' : '⏳'}
               </div>
             </div>
@@ -220,11 +220,11 @@ const Canteen = () => {
 
         {/* Timetable Edit Alert */}
         {!canEditTimetable && (
-          <div className="bg-accent/10 border border-accent/20 rounded-2xl p-4 mb-8">
+          <div className="bg-[#FACC15]/10 border border-[#FACC15]/20 rounded-2xl p-4 mb-8">
             <div className="flex items-center space-x-3">
               <span className="text-2xl">⏰</span>
               <div>
-                <h3 className="font-semibold text-accent">Timetable Edit Restriction</h3>
+                <h3 className="font-semibold text-[#FACC15]">Timetable Edit Restriction</h3>
                 <p className="text-slate-600">
                   You can only modify your meal timetable after the 25th of each month for the next month's schedule.
                 </p>
@@ -240,8 +240,8 @@ const Canteen = () => {
               onClick={() => setActiveTab('timetable')}
               className={`px-6 py-4 font-medium transition-colors ${
                 activeTab === 'timetable'
-                  ? 'text-primary border-b-2 border-primary bg-primary/5'
-                  : 'text-slate-600 hover:text-primary'
+                  ? 'text-[#6366F1] border-b-2 border-[#6366F1] bg-[#6366F1]/5'
+                  : 'text-slate-600 hover:text-[#6366F1]'
               }`}
             >
               Meal Timetable
@@ -250,8 +250,8 @@ const Canteen = () => {
               onClick={() => setActiveTab('billing')}
               className={`px-6 py-4 font-medium transition-colors ${
                 activeTab === 'billing'
-                  ? 'text-primary border-b-2 border-primary bg-primary/5'
-                  : 'text-slate-600 hover:text-primary'
+                  ? 'text-[#6366F1] border-b-2 border-[#6366F1] bg-[#6366F1]/5'
+                  : 'text-slate-600 hover:text-[#6366F1]'
               }`}
             >
               Monthly Billing
@@ -260,8 +260,8 @@ const Canteen = () => {
               onClick={() => setActiveTab('history')}
               className={`px-6 py-4 font-medium transition-colors ${
                 activeTab === 'history'
-                  ? 'text-primary border-b-2 border-primary bg-primary/5'
-                  : 'text-slate-600 hover:text-primary'
+                  ? 'text-[#6366F1] border-b-2 border-[#6366F1] bg-[#6366F1]/5'
+                  : 'text-slate-600 hover:text-[#6366F1]'
               }`}
             >
               Meal History
@@ -278,7 +278,7 @@ const Canteen = () => {
                     disabled={!canEditTimetable}
                     className={`px-6 py-2 rounded-xl font-medium transition-colors ${
                       canEditTimetable
-                        ? 'bg-primary hover:bg-primary-dark text-white'
+                        ? 'bg-[#6366F1] hover:bg-[#4F46E5] text-white'
                         : 'bg-slate-300 text-slate-500 cursor-not-allowed'
                     }`}
                   >
@@ -313,7 +313,7 @@ const Canteen = () => {
                               value={mealPlan.breakfast?.[day]?.time || '08:00'}
                               onChange={(e) => updateMealPlan('breakfast', day, { time: e.target.value })}
                               disabled={!canEditTimetable || !mealPlan.breakfast?.[day]?.selected}
-                              className="w-full px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                              className="w-full px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#6366F1]"
                             />
                           </div>
                         </div>
@@ -346,7 +346,7 @@ const Canteen = () => {
                               value={mealPlan.lunch?.[day]?.type || 'veg'}
                               onChange={(e) => updateMealPlan('lunch', day, { type: e.target.value })}
                               disabled={!canEditTimetable || !mealPlan.lunch?.[day]?.selected}
-                              className="w-full px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                              className="w-full px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#6366F1]"
                             >
                               <option value="veg">Vegetarian</option>
                               <option value="non-veg">Non-Vegetarian</option>
@@ -356,7 +356,7 @@ const Canteen = () => {
                               value={mealPlan.lunch?.[day]?.time || '12:30'}
                               onChange={(e) => updateMealPlan('lunch', day, { time: e.target.value })}
                               disabled={!canEditTimetable || !mealPlan.lunch?.[day]?.selected}
-                              className="w-full px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                              className="w-full px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#6366F1]"
                             />
                           </div>
                         </div>
@@ -389,7 +389,7 @@ const Canteen = () => {
                               value={mealPlan.dinner?.[day]?.type || 'veg'}
                               onChange={(e) => updateMealPlan('dinner', day, { type: e.target.value })}
                               disabled={!canEditTimetable || !mealPlan.dinner?.[day]?.selected}
-                              className="w-full px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                              className="w-full px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#6366F1]"
                             >
                               <option value="veg">Vegetarian</option>
                               <option value="non-veg">Non-Vegetarian</option>
@@ -399,7 +399,7 @@ const Canteen = () => {
                               value={mealPlan.dinner?.[day]?.time || '19:30'}
                               onChange={(e) => updateMealPlan('dinner', day, { time: e.target.value })}
                               disabled={!canEditTimetable || !mealPlan.dinner?.[day]?.selected}
-                              className="w-full px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                              className="w-full px-2 py-1 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#6366F1]"
                             />
                           </div>
                         </div>
@@ -418,7 +418,7 @@ const Canteen = () => {
                     <select
                       value={selectedMonth}
                       onChange={(e) => setSelectedMonth(parseInt(e.target.value))}
-                      className="px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366F1]"
                     >
                       {Array.from({ length: 12 }, (_, i) => (
                         <option key={i} value={i}>
@@ -429,7 +429,7 @@ const Canteen = () => {
                     <select
                       value={selectedYear}
                       onChange={(e) => setSelectedYear(parseInt(e.target.value))}
-                      className="px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366F1]"
                     >
                       <option value={2025}>2025</option>
                       <option value={2024}>2024</option>
@@ -493,7 +493,7 @@ const Canteen = () => {
                     <div className="border-t border-slate-200 mt-4 pt-4">
                       <div className="flex justify-between items-center text-lg font-semibold">
                         <span>Total Amount</span>
-                        <span className="text-primary">₹{monthlyBill.totalAmount}</span>
+                        <span className="text-[#6366F1]">₹{monthlyBill.totalAmount}</span>
                       </div>
                     </div>
                   </div>
@@ -501,9 +501,9 @@ const Canteen = () => {
                   <div className="space-y-6">
                     <div className="bg-white border border-slate-200 rounded-xl p-6">
                       <h3 className="text-lg font-semibold text-slate-800 mb-4">Payment Status</h3>
-                      <div className={`p-4 rounded-lg ${monthlyBill.paidStatus ? 'bg-success/10 border border-success/20' : 'bg-danger/10 border border-danger/20'}`}>
+                      <div className={`p-4 rounded-lg ${monthlyBill.paidStatus ? 'bg-[#22C55E]/10 border border-[#22C55E]/20' : 'bg-[#EF4444]/10 border border-[#EF4444]/20'}`}>
                         <div className="flex items-center justify-between">
-                          <span className={`font-medium ${monthlyBill.paidStatus ? 'text-success' : 'text-danger'}`}>
+                          <span className={`font-medium ${monthlyBill.paidStatus ? 'text-[#22C55E]' : 'text-[#EF4444]'}`}>
                             {monthlyBill.paidStatus ? 'Payment Completed' : 'Payment Pending'}
                           </span>
                           <span className="text-2xl">
@@ -513,7 +513,7 @@ const Canteen = () => {
                       </div>
 
                       {!monthlyBill.paidStatus && (
-                        <button className="w-full bg-primary hover:bg-primary-dark text-white py-3 px-4 rounded-xl font-medium transition-colors mt-4">
+                        <button className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-3 px-4 rounded-xl font-medium transition-colors mt-4">
                           Pay Now - ₹{monthlyBill.totalAmount}
                         </button>
                       )}
@@ -522,10 +522,10 @@ const Canteen = () => {
                     <div className="bg-white border border-slate-200 rounded-xl p-6">
                       <h3 className="text-lg font-semibold text-slate-800 mb-4">Quick Actions</h3>
                       <div className="space-y-3">
-                        <button className="w-full bg-secondary hover:bg-secondary-dark text-white py-2 px-4 rounded-lg transition-colors">
+                        <button className="w-full bg-[#14B8A6] hover:bg-[#0F766E] text-white py-2 px-4 rounded-lg transition-colors">
                           Download Bill
                         </button>
-                        <button className="w-full bg-accent hover:bg-yellow-500 text-white py-2 px-4 rounded-lg transition-colors">
+                        <button className="w-full bg-[#FACC15] hover:bg-yellow-500 text-white py-2 px-4 rounded-lg transition-colors">
                           Email Bill
                         </button>
                         <button className="w-full bg-slate-200 hover:bg-slate-300 text-slate-700 py-2 px-4 rounded-lg transition-colors">
@@ -558,7 +558,7 @@ const Canteen = () => {
                           <td className="py-4 px-6">{new Date(day.date).toLocaleDateString()}</td>
                           <td className="py-4 px-6 text-center">
                             {day.breakfast ? (
-                              <span className="inline-block w-6 h-6 bg-success rounded-full text-white text-xs flex items-center justify-center">✓</span>
+                              <span className="inline-block w-6 h-6 bg-[#22C55E] rounded-full text-white text-xs flex items-center justify-center">✓</span>
                             ) : (
                               <span className="inline-block w-6 h-6 bg-slate-300 rounded-full text-xs flex items-center justify-center">-</span>
                             )}

@@ -228,28 +228,28 @@ const StudentDashboard = () => {
   const getPriorityColor = (priority) => {
     switch (priority) {
       case 'high':
-        return 'border-danger bg-danger/5';
+        return 'border-[#EF4444] bg-[#EF4444]/5';
       case 'medium':
-        return 'border-accent bg-accent/5';
+        return 'border-[#FACC15] bg-[#FACC15]/5';
       case 'low':
-        return 'border-success bg-success/5';
+        return 'border-[#22C55E] bg-[#22C55E]/5';
       default:
         return 'border-slate-200 bg-slate-50';
     }
   };
 
   const getAttendanceColor = (percentage) => {
-    if (percentage >= 90) return 'text-success';
-    if (percentage >= 80) return 'text-primary';
-    if (percentage >= 75) return 'text-accent';
-    return 'text-danger';
+    if (percentage >= 90) return 'text-[#22C55E]';
+    if (percentage >= 80) return 'text-[#6366F1]';
+    if (percentage >= 75) return 'text-[#FACC15]';
+    return 'text-[#EF4444]';
   };
 
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-200 to-slate-300 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#6366F1] mx-auto mb-4"></div>
           <p className="text-slate-600">Loading your dashboard...</p>
         </div>
       </div>
@@ -275,16 +275,16 @@ const StudentDashboard = () => {
             {/* Profile Card */}
             <div 
               onClick={() => navigate('/student/profile')}
-              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer border-2 border-transparent hover:border-primary"
+              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer border-2 border-transparent hover:border-[#6366F1]"
             >
               <div className="text-center">
-                <div className="w-20 h-20 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                <div className="w-20 h-20 bg-[#6366F1] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
                   {studentProfile.name.charAt(0)}
                   <img src={studImg} />
                 </div>
-                <h3 className="font-semibold text-slate-800 mb-1">{studentProfile.name}</h3>
-                <p className="text-slate-600 text-sm">{studentProfile.rollNo}</p>
-                <p className="text-slate-600 text-sm">{studentProfile.semester}</p>
+                <h3 className="font-semibold text-slate-800 mb-1 secHeading-font">{studentProfile.name}</h3>
+                <p className="text-slate-600 text-sm roboto-font">{studentProfile.rollNo}</p>
+                <p className="text-slate-600 text-sm roboto-font">{studentProfile.semester}</p>
                 <div className="mt-4 pt-4 border-t border-slate-200">
                   <div className="text-xs text-slate-500 space-y-1">
                     <p>📧 {studentProfile.email}</p>
@@ -297,7 +297,7 @@ const StudentDashboard = () => {
 
             {/* Faculty in Charge */}
             <div className="bg-white rounded-2xl p-6 shadow-md">
-              <h3 className="text-lg font-semibold text-slate-800 mb-4">Faculty in Charge</h3>
+              <h3 className="text-lg font-semibold text-slate-800 mb-4 secHeading-font">Faculty in Charge</h3>
               <div className="space-y-4">
                 {facultyDetails.slice(0, 2).map((faculty) => (
                   <div key={faculty.id} className="flex items-center space-x-3 p-3 bg-slate-50 rounded-xl">
@@ -305,13 +305,13 @@ const StudentDashboard = () => {
                       {faculty.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-medium text-slate-800 text-sm">{faculty.name}</h4>
-                      <p className="text-slate-600 text-xs">{faculty.subject}</p>
-                      <p className="text-slate-500 text-xs">{faculty.office}</p>
+                      <h4 className="font-medium text-slate-800 text-sm secHeading-font">{faculty.name}</h4>
+                      <p className="text-slate-600 text-xs roboto-font">{faculty.subject}</p>
+                      <p className="text-slate-500 text-xs roboto-font">{faculty.office}</p>
                     </div>
                   </div>
                 ))}
-                <button className="w-full text-primary hover:text-primary-dark text-sm font-medium mt-2">
+                <button className="w-full text-[#6366F1] hover:text-[#4F46E5] text-sm font-medium mt-2">
                   View All Faculty →
                 </button>
               </div>
@@ -325,7 +325,7 @@ const StudentDashboard = () => {
               {/* Attendance Card */}
               <div 
                 onClick={() => navigate('/student/attendance')}
-                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer border-2 border-transparent hover:border-primary group"
+                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer border-2 border-transparent hover:border-[#6366F1] group"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="bg-[#6366F1] p-3 rounded-xl text-white text-2xl group-hover:scale-110 transition-transform">
@@ -335,21 +335,21 @@ const StudentDashboard = () => {
                     {attendanceSummary.overall}%
                   </span>
                 </div>
-                <h3 className="font-semibold text-slate-800 mb-2">Attendance</h3>
-                <p className="text-slate-600 text-sm mb-3">Overall attendance this semester</p>
+                <h3 className="font-semibold text-slate-800 mb-2 secHeading-font">Attendance</h3>
+                <p className="text-slate-600 text-sm mb-3 roboto-font">Overall attendance this semester</p>
                 <div className="w-full bg-slate-200 rounded-full h-2">
                   <div 
-                    className="bg-primary h-2 rounded-full transition-all" 
+                    className="bg-[#6366F1] h-2 rounded-full transition-all" 
                     style={{ width: `${attendanceSummary.overall}%` }}
                   ></div>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Updated {attendanceSummary.lastUpdated}</p>
+                <p className="text-xs text-slate-500 mt-2 roboto-font">Updated {attendanceSummary.lastUpdated}</p>
               </div>
 
               {/* Grades Card */}
               <div 
                 onClick={() => navigate('/student/grades')}
-                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer border-2 border-transparent hover:border-secondary group"
+                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer border-2 border-transparent hover:border-[#14B8A6] group"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="bg-[#14B8A6] p-3 rounded-xl text-white text-2xl group-hover:scale-110 transition-transform">
@@ -371,7 +371,7 @@ const StudentDashboard = () => {
               {/* Canteen Card */}
               <div 
                 onClick={() => navigate('/student/canteen')}
-                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer border-2 border-transparent hover:border-accent group"
+                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer border-2 border-transparent hover:border-[#FACC15] group"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="bg-[#FACC15] p-3 rounded-xl text-white text-2xl group-hover:scale-110 transition-transform">
@@ -395,7 +395,7 @@ const StudentDashboard = () => {
               {/* Fees Card */}
               <div 
                 onClick={() => navigate('/student/fees')}
-                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer border-2 border-transparent hover:border-danger group"
+                className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer border-2 border-transparent hover:border-[#EF4444] group"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="bg-[#EF4444] p-3 rounded-xl text-white text-2xl group-hover:scale-110 transition-transform">
@@ -405,8 +405,8 @@ const StudentDashboard = () => {
                     ₹{(feesSummary.pendingAmount / 1000).toFixed(0)}K
                   </span>
                 </div>
-                <h3 className="font-semibold text-slate-800 mb-2">Fees</h3>
-                <p className="text-slate-600 text-sm mb-3">Pending amount</p>
+                <h3 className="font-semibold text-slate-800 mb-2 secHeading-font">Fees</h3>
+                <p className="text-slate-600 text-sm mb-3 roboto-font">Pending amount</p>
                 <div className="w-full bg-slate-200 rounded-full h-2 mb-2">
                   <div 
                     className="bg-[#22C55E] h-2 rounded-full transition-all" 
@@ -442,7 +442,7 @@ const StudentDashboard = () => {
             <div className="bg-white rounded-2xl p-6 shadow-md">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-lg font-semibold text-slate-800">Notifications</h3>
-                <span className="bg-primary text-white px-2 py-1 rounded-full text-xs">
+                <span className="bg-[#6366F1] text-white px-2 py-1 rounded-full text-xs">
                   {notifications.filter(n => n.unread).length} new
                 </span>
               </div>
@@ -461,23 +461,23 @@ const StudentDashboard = () => {
                     <div className="flex items-start space-x-3">
                       <div className="text-lg">{getNotificationIcon(notification.type)}</div>
                       <div className="flex-1">
-                        <h4 className={`font-medium text-sm ${
+                        <h4 className={`font-medium secHeading-font text-sm ${
                           notification.unread ? 'text-slate-800' : 'text-slate-600'
                         }`}>
                           {notification.title}
                         </h4>
-                        <p className="text-slate-600 text-xs mt-1">{notification.message}</p>
-                        <span className="text-slate-500 text-xs mt-1 block">{notification.time}</span>
+                        <p className="text-slate-600 text-xs mt-1 roboto-font">{notification.message}</p>
+                        <span className="text-slate-500 text-xs mt-1 block roboto-font">{notification.time}</span>
                       </div>
                       {notification.unread && (
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                        <div className="w-2 h-2 bg-[#6366F1] rounded-full"></div>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
               
-              <button className="w-full mt-4 text-primary hover:text-primary-dark text-sm font-medium">
+              <button className="w-full mt-4 text-[#6366F1] hover:text-[#4F46E5] text-sm font-medium">
                 View All Notifications
               </button>
             </div>
@@ -488,19 +488,19 @@ const StudentDashboard = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-slate-600 text-sm">Assignments Due</span>
-                  <span className="bg-danger text-white px-2 py-1 rounded-full text-xs">3</span>
+                  <span className="bg-[#EF4444] text-white px-2 py-1 rounded-full text-xs">3</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-600 text-sm">Upcoming Exams</span>
-                  <span className="bg-accent text-white px-2 py-1 rounded-full text-xs">2</span>
+                  <span className="bg-[#FACC15] text-white px-2 py-1 rounded-full text-xs">2</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-600 text-sm">Library Books</span>
-                  <span className="bg-secondary text-white px-2 py-1 rounded-full text-xs">4</span>
+                  <span className="bg-[#14B8A6] text-white px-2 py-1 rounded-full text-xs">4</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-600 text-sm">Study Hours</span>
-                  <span className="bg-success text-white px-2 py-1 rounded-full text-xs">32h</span>
+                  <span className="bg-[#22C55E] text-white px-2 py-1 rounded-full text-xs">32h</span>
                 </div>
               </div>
             </div>

@@ -90,12 +90,6 @@ const Navbar = () => {
             active: isActive('/faculty/attendance')
           },
           {
-            name: 'Grades',
-            path: '/faculty/grades',
-            icon: '📊',
-            active: isActive('/faculty/grades')
-          },
-          {
             name: 'Library',
             path: '/faculty/library',
             icon: '📚',

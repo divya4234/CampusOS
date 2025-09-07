@@ -21,14 +21,15 @@
   --color-success: #22C55E;
 }
 
-.heading-font{
+/* Custom font classes for backward compatibility */
+.heading-font {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
 }
 
-.secHeading-font{
+.secHeading-font {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -41,6 +42,11 @@
   font-weight: 400;
   font-style: normal;
   font-variation-settings: "wdth" 100;
+}
+
+/* Make sure fonts load properly */
+body {
+  font-family: "Roboto", sans-serif;
 }
 
 /* Custom beautiful styles */

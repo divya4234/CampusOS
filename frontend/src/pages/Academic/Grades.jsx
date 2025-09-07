@@ -138,13 +138,13 @@ const Grades = () => {
   const getGradeColor = (grade) => {
     switch (grade) {
       case 'A+':
-        return 'bg-success text-white';
+        return 'bg-[#22C55E] text-white';
       case 'A':
-        return 'bg-primary text-white';
+        return 'bg-[#6366F1] text-white';
       case 'B+':
-        return 'bg-secondary text-white';
+        return 'bg-[#14B8A6] text-white';
       case 'B':
-        return 'bg-accent text-white';
+        return 'bg-[#FACC15] text-white';
       case 'C':
         return 'bg-orange-500 text-white';
       default:
@@ -153,18 +153,18 @@ const Grades = () => {
   };
 
   const getPerformanceColor = (percentage) => {
-    if (percentage >= 90) return 'text-success';
-    if (percentage >= 80) return 'text-primary';
-    if (percentage >= 70) return 'text-secondary';
-    if (percentage >= 60) return 'text-accent';
-    return 'text-danger';
+    if (percentage >= 90) return 'text-[#22C55E]';
+    if (percentage >= 80) return 'text-[#6366F1]';
+    if (percentage >= 70) return 'text-[#14B8A6]';
+    if (percentage >= 60) return 'text-[#FACC15]';
+    return 'text-[#EF4444]';
   };
 
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-200 to-slate-300 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#6366F1] mx-auto mb-4"></div>
           <p className="text-slate-600">Loading grades data...</p>
         </div>
       </div>
@@ -179,7 +179,7 @@ const Grades = () => {
           <h1 className="text-3xl font-bold text-slate-800 mb-2 heading-font">
             {user?.name}'s Academic Performance
           </h1>
-          <p className="text-slate-600">
+          <p className="text-slate-600 roboto-font">
             Track your grades, CGPA, and academic progress
           </p>
         </div>
@@ -189,11 +189,11 @@ const Grades = () => {
           <div className="bg-white rounded-2xl p-6 shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-600 text-sm font-medium">Current SGPA</p>
-                <p className="text-3xl font-bold text-primary">{gradesData.current?.sgpa}</p>
-                <p className="text-slate-500 text-sm mt-1">{gradesData.current?.semester}</p>
+                <p className="text-slate-600 text-sm font-medium roboto-font">Current SGPA</p>
+                <p className="text-3xl font-bold text-[#6366F1] roboto-font">{gradesData.current?.sgpa}</p>
+                <p className="text-slate-500 text-sm mt-1 roboto-font">{gradesData.current?.semester}</p>
               </div>
-              <div className="bg-primary p-3 rounded-xl text-white text-2xl">
+              <div className="bg-[#6366F1] p-3 rounded-xl text-white text-2xl">
                 📊
               </div>
             </div>
@@ -202,11 +202,11 @@ const Grades = () => {
           <div className="bg-white rounded-2xl p-6 shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-600 text-sm font-medium">Overall CGPA</p>
-                <p className="text-3xl font-bold text-success">{gradesData.overallCgpa}</p>
-                <p className="text-slate-500 text-sm mt-1">All Semesters</p>
+                <p className="text-slate-600 text-sm font-medium roboto-font">Overall CGPA</p>
+                <p className="text-3xl font-bold text-[#22C55E] roboto-font">{gradesData.overallCgpa}</p>
+                <p className="text-slate-500 text-sm mt-1 roboto-font">All Semesters</p>
               </div>
-              <div className="bg-success p-3 rounded-xl text-white text-2xl">
+              <div className="bg-[#22C55E] p-3 rounded-xl text-white text-2xl">
                 🏆
               </div>
             </div>
@@ -215,11 +215,11 @@ const Grades = () => {
           <div className="bg-white rounded-2xl p-6 shadow-md">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-600 text-sm font-medium">Total Credits</p>
-                <p className="text-3xl font-bold text-secondary">{gradesData.totalCredits}</p>
-                <p className="text-slate-500 text-sm mt-1">Completed</p>
+                <p className="text-slate-600 text-sm font-medium roboto-font">Total Credits</p>
+                <p className="text-3xl font-bold text-[#14B8A6] roboto-font">{gradesData.totalCredits}</p>
+                <p className="text-slate-500 text-sm mt-1 roboto-font">Completed</p>
               </div>
-              <div className="bg-secondary p-3 rounded-xl text-white text-2xl">
+              <div className="bg-[#14B8A6] p-3 rounded-xl text-white text-2xl">
                 📚
               </div>
             </div>
@@ -233,8 +233,8 @@ const Grades = () => {
               onClick={() => setActiveTab('overview')}
               className={`px-6 py-4 font-medium transition-colors ${
                 activeTab === 'overview'
-                  ? 'text-primary border-b-2 border-primary bg-primary/5'
-                  : 'text-slate-600 hover:text-primary'
+                  ? 'text-[#6366F1] border-b-2 border-[#6366F1] bg-[#6366F1]/5'
+                  : 'text-slate-600 hover:text-[#6366F1]'
               }`}
             >
               Current Semester
@@ -243,8 +243,8 @@ const Grades = () => {
               onClick={() => setActiveTab('history')}
               className={`px-6 py-4 font-medium transition-colors ${
                 activeTab === 'history'
-                  ? 'text-primary border-b-2 border-primary bg-primary/5'
-                  : 'text-slate-600 hover:text-primary'
+                  ? 'text-[#6366F1] border-b-2 border-[#6366F1] bg-[#6366F1]/5'
+                  : 'text-slate-600 hover:text-[#6366F1]'
               }`}
             >
               Academic History
@@ -253,8 +253,8 @@ const Grades = () => {
               onClick={() => setActiveTab('analysis')}
               className={`px-6 py-4 font-medium transition-colors ${
                 activeTab === 'analysis'
-                  ? 'text-primary border-b-2 border-primary bg-primary/5'
-                  : 'text-slate-600 hover:text-primary'
+                  ? 'text-[#6366F1] border-b-2 border-[#6366F1] bg-[#6366F1]/5'
+                  : 'text-slate-600 hover:text-[#6366F1]'
               }`}
             >
               Performance Analysis
@@ -265,12 +265,12 @@ const Grades = () => {
             {activeTab === 'overview' && (
               <div>
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-semibold text-slate-800">
+                  <h2 className="text-xl font-semibold text-slate-800 secHeading-font">
                     {gradesData.current?.semester} - {gradesData.current?.year}
                   </h2>
                   <div className="text-right">
-                    <p className="text-sm text-slate-600">Current SGPA</p>
-                    <p className="text-2xl font-bold text-primary">{gradesData.current?.sgpa}</p>
+                    <p className="text-sm text-slate-600 roboto-font">Current SGPA</p>
+                    <p className="text-2xl font-bold text-[#6366F1] roboto-font">{gradesData.current?.sgpa}</p>
                   </div>
                 </div>
 
@@ -310,7 +310,7 @@ const Grades = () => {
                             </span>
                           </td>
                           <td className="py-4 px-4 text-center">
-                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${getGradeColor(subject.grade)}`}>
+                            <span className={`px-3 py-1 rounded-full font-medium ${getGradeColor(subject.grade)}`}>
                               {subject.grade}
                             </span>
                           </td>
@@ -331,28 +331,28 @@ const Grades = () => {
                       <h3 className="text-lg font-semibold text-slate-800">{year.year}</h3>
                       <div className="text-right">
                         <p className="text-sm text-slate-600">Year CGPA</p>
-                        <p className="text-xl font-bold text-primary">{year.yearCgpa}</p>
+                        <p className="text-xl font-bold text-[#6366F1]">{year.yearCgpa}</p>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {year.semesters.map((semester, semIndex) => (
-                        <div key={semIndex} className={`p-4 rounded-lg border ${semester.current ? 'border-primary bg-primary/5' : 'border-slate-200'}`}>
+                        <div key={semIndex} className={`p-4 rounded-lg border ${semester.current ? 'border-[#6366F1] bg-[#6366F1]/5' : 'border-slate-200'}`}>
                           <div className="flex justify-between items-center">
                             <div>
-                              <h4 className="font-medium text-slate-800">{semester.semester}</h4>
+                              <h4 className="font-medium text-slate-800 secHeading-font">{semester.semester}</h4>
                               <p className="text-sm text-slate-600">{semester.subjects} subjects • {semester.credits} credits</p>
                             </div>
                             <div className="text-right">
-                              <p className="text-sm text-slate-600">SGPA</p>
-                              <p className={`text-xl font-bold ${semester.current ? 'text-primary' : 'text-slate-800'}`}>
+                              <p className="text-sm text-slate-600 roboto-font">SGPA</p>
+                              <p className={`text-xl font-bold ${semester.current ? 'text-[#6366F1]' : 'text-slate-800'}`}>
                                 {semester.sgpa}
                               </p>
                             </div>
                           </div>
                           {semester.current && (
                             <div className="mt-2">
-                              <span className="inline-block px-2 py-1 bg-primary text-white text-xs rounded-full">
+                              <span className="inline-block px-2 py-1 bg-[#6366F1] text-white text-xs rounded-full roboto-font">
                                 Current Semester
                               </span>
                             </div>
@@ -369,7 +369,7 @@ const Grades = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div className="space-y-6">
                   <div className="border border-slate-200 rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-slate-800 mb-4">Grade Distribution</h3>
+                    <h3 className="text-lg font-semibold text-slate-800 mb-4 secHeading-font">Grade Distribution</h3>
                     <div className="space-y-3">
                       {['A+', 'A', 'B+', 'B', 'C'].map(grade => {
                         const count = gradesData.current?.subjects.filter(s => s.grade === grade).length || 0;
@@ -382,11 +382,11 @@ const Grades = () => {
                             <div className="flex items-center space-x-2">
                               <div className="w-20 bg-slate-200 rounded-full h-2">
                                 <div 
-                                  className="bg-primary h-2 rounded-full" 
+                                  className="bg-[#6366F1] h-2 rounded-full" 
                                   style={{ width: `${percentage}%` }}
                                 ></div>
                               </div>
-                              <span className="text-sm text-slate-600 w-12">{count} ({percentage}%)</span>
+                              <span className="text-sm text-slate-600 w-12 roboto-font">{count} ({percentage}%)</span>
                             </div>
                           </div>
                         );
@@ -395,14 +395,14 @@ const Grades = () => {
                   </div>
 
                   <div className="border border-slate-200 rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-slate-800 mb-4">Performance Insights</h3>
+                    <h3 className="text-lg font-semibold text-slate-800 mb-4 secHeading-font">Performance Insights</h3>
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between p-3 bg-success/10 rounded-lg">
-                        <span className="text-success font-medium">Strong Performance</span>
-                        <span className="text-sm text-slate-600">Machine Learning, Data Analytics</span>
+                      <div className="flex items-center justify-between p-3 bg-[#22C55E]/10 rounded-lg">
+                        <span className="text-[#22C55E] font-medium roboto-font">Strong Performance</span>
+                        <span className="text-sm text-slate-600 roboto-font">Machine Learning, Data Analytics</span>
                       </div>
-                      <div className="flex items-center justify-between p-3 bg-accent/10 rounded-lg">
-                        <span className="text-accent font-medium">Improvement Needed</span>
+                      <div className="flex items-center justify-between p-3 bg-[#FACC15]/10 rounded-lg">
+                        <span className="text-[#FACC15] font-medium">Improvement Needed</span>
                         <span className="text-sm text-slate-600">Computer Networks</span>
                       </div>
                     </div>
@@ -410,15 +410,15 @@ const Grades = () => {
                 </div>
 
                 <div className="border border-slate-200 rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-slate-800 mb-4">CGPA Trend</h3>
+                  <h3 className="text-lg font-semibold text-slate-800 mb-4 secHeading-font">CGPA Trend</h3>
                   <div className="space-y-4">
                     {cgpaHistory.map((year, index) => (
                       <div key={index} className="flex items-center justify-between p-3 border border-slate-200 rounded-lg">
                         <span className="font-medium">{year.year}</span>
                         <div className="flex items-center space-x-2">
-                          <span className="text-lg font-bold text-primary">{year.yearCgpa}</span>
+                          <span className="text-lg font-bold text-[#6366F1]">{year.yearCgpa}</span>
                           {index > 0 && (
-                            <span className={`text-sm ${year.yearCgpa > cgpaHistory[index-1].yearCgpa ? 'text-success' : 'text-danger'}`}>
+                            <span className={`text-sm ${year.yearCgpa > cgpaHistory[index-1].yearCgpa ? 'text-[#22C55E] roboto-font' : 'text-[#EF4444] roboto-font'}`}>
                               {year.yearCgpa > cgpaHistory[index-1].yearCgpa ? '↗️' : '↘️'}
                             </span>
                           )}
@@ -427,7 +427,7 @@ const Grades = () => {
                     ))}
                   </div>
 
-                  <div className="mt-6 p-4 bg-primary/10 rounded-lg">
+                  <div className="mt-6 p-4 bg-[#6366F1]/10 rounded-lg">
                     <h4 className="font-semibold text-slate-800 mb-2">Academic Goals</h4>
                     <ul className="text-sm text-slate-600 space-y-1">
                       <li>• Maintain CGPA above 8.5 ✅</li>
@@ -443,15 +443,15 @@ const Grades = () => {
 
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <button className="bg-primary hover:bg-primary-dark text-white p-4 rounded-2xl transition-colors flex items-center justify-center space-x-3">
+          <button className="bg-[#6366F1] hover:bg-[#4F46E5] text-white p-4 rounded-2xl transition-colors flex items-center justify-center space-x-3">
             <span className="text-2xl">📊</span>
             <span className="font-semibold">Download Transcript</span>
           </button>
-          <button className="bg-secondary hover:bg-secondary-dark text-white p-4 rounded-2xl transition-colors flex items-center justify-center space-x-3">
+          <button className="bg-[#14B8A6] hover:bg-[#0D9488] text-white p-4 rounded-2xl transition-colors flex items-center justify-center space-x-3">
             <span className="text-2xl">📧</span>
             <span className="font-semibold">Email to Parents</span>
           </button>
-          <button className="bg-success hover:bg-green-600 text-white p-4 rounded-2xl transition-colors flex items-center justify-center space-x-3">
+          <button className="bg-[#22C55E] hover:bg-green-600 text-white p-4 rounded-2xl transition-colors flex items-center justify-center space-x-3">
             <span className="text-2xl">🎯</span>
             <span className="font-semibold">Set Academic Goals</span>
           </button>

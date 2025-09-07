@@ -420,7 +420,7 @@ const ProfilePage = () => {
                         value={editForm.address || ''}
                         onChange={handleInputChange}
                         rows={3}
-                        className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6366F1] focus:border-transparent transition-all resize-none"
                       />
                     ) : (
                       <div className="px-4 py-3 bg-slate-50 rounded-lg border border-slate-200">
@@ -435,7 +435,7 @@ const ProfilePage = () => {
             {/* Academic Details Tab */}
             {activeTab === 'academic' && (
               <div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-6">Academic Details</h3>
+                <h3 className="text-xl font-semibold text-slate-800 mb-6 secHeading-font">Academic Details</h3>
                 
                 {/* Current Academic Info */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -458,7 +458,7 @@ const ProfilePage = () => {
                 </div>
 
                 {/* Academic History */}
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Academic History</h4>
+                <h4 className="text-lg font-semibold text-slate-800 mb-4 secHeading-font">Academic History</h4>
                 <div className="overflow-x-auto">
                   <table className="w-full border border-slate-200 rounded-lg overflow-hidden">
                     <thead className="bg-slate-100">
@@ -474,17 +474,17 @@ const ProfilePage = () => {
                     <tbody className="divide-y divide-slate-200">
                       {academicHistory.map((record, index) => (
                         <tr key={index} className="hover:bg-slate-50">
-                          <td className="px-6 py-4 text-slate-800 font-medium">{record.semester}</td>
-                          <td className={`px-6 py-4 font-semibold ${getGradeColor(record.sgpa)}`}>
+                          <td className="px-6 py-4 text-slate-800 font-medium  roboto-font ">{record.semester}</td>
+                          <td className={`px-6 py-4 font-semibold  roboto-font ${getGradeColor(record.sgpa)}`}>
                             {record.sgpa}
                           </td>
-                          <td className={`px-6 py-4 font-semibold ${getGradeColor(record.cgpa)}`}>
+                          <td className={`px-6 py-4 font-semibold  roboto-font ${getGradeColor(record.cgpa)}`}>
                             {record.cgpa}
                           </td>
-                          <td className="px-6 py-4 text-slate-600">{record.credits}</td>
-                          <td className="px-6 py-4 text-slate-600">{record.year}</td>
+                          <td className="px-6 py-4 text-slate-600 roboto-font ">{record.credits}</td>
+                          <td className="px-6 py-4 text-slate-600 roboto-font ">{record.year}</td>
                           <td className="px-6 py-4">
-                            <span className="bg-[#22C55E] text-white px-3 py-1 rounded-full text-xs font-medium">
+                            <span className="bg-[#22C55E] text-white px-3 py-1 rounded-full text-xs font-medium roboto-font ">
                               {record.status}
                             </span>
                           </td>
@@ -499,7 +499,7 @@ const ProfilePage = () => {
             {/* Contact Information Tab */}
             {activeTab === 'contact' && (
               <div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-6">Contact Information</h3>
+                <h3 className="text-xl font-semibold text-slate-800 mb-6 secHeading-font">Contact Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {[
                     { label: 'Permanent Address', value: profileData.contact?.permanentAddress },
@@ -524,7 +524,7 @@ const ProfilePage = () => {
             {/* Documents Tab */}
             {activeTab === 'documents' && (
               <div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-6">Document Information</h3>
+                <h3 className="text-xl font-semibold text-slate-800 mb-6 secHeading-font">Document Information</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {[
                     { label: 'Aadhar Card', value: profileData.documents?.aadharCard, icon: '🆔' },
@@ -549,7 +549,7 @@ const ProfilePage = () => {
             {/* Achievements Tab */}
             {activeTab === 'achievements' && (
               <div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-6">Achievements & Awards</h3>
+                <h3 className="text-xl font-semibold text-slate-800 mb-6 secHeading-font">Achievements & Awards</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {achievements.map((achievement) => (
                     <div key={achievement.id} className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg p-6 border border-primary/20">

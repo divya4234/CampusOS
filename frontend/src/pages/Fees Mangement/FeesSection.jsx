@@ -450,8 +450,8 @@ const FeesSection = () => {
                       </span>
                     </div>
                     
-                    <h4 className="font-semibold text-slate-800 mb-2">{installment.name}</h4>
-                    <p className="text-2xl font-bold text-primary mb-2">₹{installment.amount.toLocaleString()}</p>
+                    <h4 className="font-semibold text-slate-800 mb-2 secHeading-font">{installment.name}</h4>
+                    <p className="text-2xl font-bold text-[#6366F1] mb-2 roboto-font">₹{installment.amount.toLocaleString()}</p>
                     
                     <div className="space-y-2 text-sm text-slate-600 mb-4">
                       <div className="flex justify-between">
@@ -461,13 +461,13 @@ const FeesSection = () => {
                       {installment.paidDate && (
                         <div className="flex justify-between">
                           <span>Paid Date:</span>
-                          <span className="text-success">{installment.paidDate}</span>
+                          <span className="text-[#22C55E]">{installment.paidDate}</span>
                         </div>
                       )}
                       {installment.paidAmount > 0 && (
                         <div className="flex justify-between">
                           <span>Paid Amount:</span>
-                          <span className="text-success">₹{installment.paidAmount.toLocaleString()}</span>
+                          <span className="text-[#22C55E]">₹{installment.paidAmount.toLocaleString()}</span>
                         </div>
                       )}
                     </div>
@@ -479,7 +479,7 @@ const FeesSection = () => {
                           setPaymentAmount(installment.amount - installment.paidAmount);
                           setShowPaymentModal(true);
                         }}
-                        className="w-full bg-primary hover:bg-primary-dark text-white py-2 px-4 rounded-xl transition-colors"
+                        className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-2 px-4 rounded-xl transition-colors"
                       >
                         Pay Now
                       </button>
