@@ -170,7 +170,7 @@ CampusOS provides:
 
 ```bash
 # Clone repository
-git clone https://github.com/divya4234/CampusOS.git
+git clone https://github.com/vinit-codes/CampusOS
 
 # Install dependencies
 cd CampusOS
