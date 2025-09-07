@@ -9,10 +9,21 @@ import Admin from "./src/models/Admin.js";
 import { createCollegeWithAdmin } from "./src/services/college.service.js";
 
 const app = express();
+
+// Root route for browser visits
+app.get('/', (_req, res) => {
+  res.send('Backend is running 🚀');
+});
+
+// Optional: ignore favicon requests to prevent 404 noise
+app.get('/favicon.ico', (_req, res) => res.status(204));
+
 //testing
 app.get("/test-tenant", tenantFromHeader, (req, res) => {
   res.json({ tenantId: req.tenantId });
 });
+
+
 
 app.post("/test-create-admin", async (req, res) => {
   try {

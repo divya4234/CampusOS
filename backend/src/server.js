@@ -14,42 +14,6 @@ import teacherRoutes from "./routes/teacher.routes.js";
 import studentRoutes from "./routes/student.routes.js";
 
 const app = express();
-//testing
-app.get("/test-tenant", tenantFromHeader, (req, res) => {
-  res.json({ tenantId: req.tenantId });
-});
-app.use("/api/dashboard", dashboardRoutes);
-
-app.post("/test-create-admin", async (req, res) => {
-  try {
-    const admin = new Admin({
-      name: "Test Admin",
-      email: "test@iwe.edu",
-      collegeId: "abc123"
-    });
-    await admin.setPassword("pass123");
-    await admin.save();
-    res.json({ id: admin._id, email: admin.email, collegeId: admin.collegeId });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-app.post("/test-create-college", async (req, res) => {
-  try {
-    const result = await createCollegeWithAdmin({
-      name: "Indian Web Engg College",
-      code: "IWE",
-      adminName: "Vineeth",
-      adminEmail: "vineeth@iwe.edu",
-      adminPassword: "admin123"
-    });
-    res.json(result);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
 
 // Middleware
 app.use(helmet());
@@ -62,11 +26,49 @@ app.get('/health', (_req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
-// Routes
-app.use("/api/colleges", collegeRoutes);
+// Register all routes
 app.use("/api/auth", authRoutes);
+app.use("/api/colleges", collegeRoutes);
 app.use("/api/teachers", teacherRoutes);
 app.use("/api/students", studentRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+
+// Development-only routes
+if (process.env.NODE_ENV === 'development') {
+  app.get("/test-tenant", tenantFromHeader, (req, res) => {
+    res.json({ tenantId: req.tenantId });
+  });
+
+  app.post("/test-create-admin", async (req, res) => {
+    try {
+      const admin = new Admin({
+        name: "Test Admin",
+        email: "test@iwe.edu",
+        collegeId: "abc123"
+      });
+      await admin.setPassword("pass123");
+      await admin.save();
+      res.json({ id: admin._id, email: admin.email, collegeId: admin.collegeId });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.post("/test-create-college", async (req, res) => {
+    try {
+      const result = await createCollegeWithAdmin({
+        name: "Indian Web Engg College",
+        code: "IWE",
+        adminName: "Vineeth",
+        adminEmail: "vineeth@iwe.edu",
+        adminPassword: "admin123"
+      });
+      res.json(result);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+}
 
 
 // Error handling
