@@ -80,3 +80,17 @@ export async function updateTeacherStatus(req, res) {
     res.status(400).json({ error: err.message });
   }
 }
+
+
+export async function getTeacherCourse(req, res) {
+  try {
+    const { id } = req.params;
+    const teacher = await teacherService(req).getById(id);
+    if (!teacher) {
+      return res.status(404).json({ error: "Teacher not found" });
+    }
+    res.json({ course: teacher.course });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+}

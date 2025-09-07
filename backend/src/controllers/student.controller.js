@@ -90,3 +90,29 @@ export async function updateStudentStatus(req, res) {
     res.status(400).json({ error: err.message });
   }
 }
+
+export async function getStudentCourse(req, res) {
+  try {
+    const { id } = req.params;
+    const student = await studentService(req).getById(id);
+    if (!student) {
+      return res.status(404).json({ error: "Student not found" });
+    }
+    res.json({ course: student.course });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+}
+
+export async function getStudentGrade(req, res) {
+  try {
+    const { id } = req.params;
+    const student = await studentService(req).getById(id);
+    if (!student) {
+      return res.status(404).json({ error: "Student not found" });
+    }
+    res.json({ grade: student.grade });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+}

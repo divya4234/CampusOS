@@ -6,6 +6,7 @@ import {
   updateTeacher,
   deleteTeacher,
   getTeachersByDepartment,
+  getTeacherCourse,
   updateTeacherStatus
 } from "../controllers/teacher.controller.js";
 import { tenantMiddleware } from "../middleware/tenant.middleware.js";
@@ -19,6 +20,7 @@ router.get("/", authRequired, requireRole("ADMIN", "TEACHER"), listTeachers);
 
 // Filter teachers by department
 router.get("/department", authRequired, requireRole("ADMIN", "TEACHER"), getTeachersByDepartment);
+router.get("/:id/course", authRequired, requireRole("ADMIN", "TEACHER"), getTeacherCourse);
 
 // Create teacher: ADMIN only
 router.post("/", authRequired, requireRole("ADMIN"), createTeacher);

@@ -8,9 +8,13 @@ const StudentSchema = new mongoose.Schema(
     email: { type: String, required: true },
     year: { type: Number, required: true },
     department: { type: String, required: true },
-    passwordHash: { type: String, required: true, select: false }
+    passwordHash: { type: String, required: true, select: false },
+
+    course: { type: String, required: true },
+    grade: { type: Number },
   },
   { timestamps: true }
+
 );
 
 // prevent duplicate emails per college
