@@ -1,10 +1,20 @@
 import axios from 'axios';
 
-const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+// Get API URL based on environment
+const getApiUrl = () => {
+  if (import.meta.env.PROD) {
+    // Production: Use environment variable or fallback
+    return import.meta.env.VITE_API_URL || 'https://your-railway-app.up.railway.app/api';
+  }
+  // Development: Use local backend
+  return import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+};
+
+const baseURL = getApiUrl();
 
 const apiClient = axios.create({
   baseURL,
-  timeout: 10000,
+  timeout: 30000, // Increased timeout for production
   headers: {
     'Content-Type': 'application/json',
   },
