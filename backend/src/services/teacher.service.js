@@ -6,9 +6,9 @@ export function teacherService(req) {
 
   return {
     list: () => s.find(),
-    
+
     getById: (id) => s.findOne({ _id: id }),
-    
+
     create: async (data) => {
       const teacher = new Teacher({ ...data, collegeId: req.tenantId });
       if (data.password) {
@@ -16,7 +16,7 @@ export function teacherService(req) {
       }
       return teacher.save();
     },
-    
+
     update: async (id, data) => {
       const updateData = { ...data };
       if (data.password) {
@@ -25,23 +25,27 @@ export function teacherService(req) {
         updateData.passwordHash = teacher.passwordHash;
         delete updateData.password;
       }
-      return s.findOneAndUpdate(
-        { _id: id },
+      return Teacher.findOneAndUpdate(
+        { _id: id, collegeId: req.tenantId }, // enforce tenant scope
         { $set: updateData },
         { new: true }
       );
     },
-    
-    delete: (id) => s.findOneAndDelete({ _id: id }),
-    
+
+    delete: async (id) => {
+      return Teacher.findOneAndDelete(
+        { _id: id, collegeId: req.tenantId } // enforce tenant scope
+      );
+    },
+
     listByDepartment: (department) => s.find({ department }),
-    
-    updateStatus: (id, status) => s.findOneAndUpdate(
-      { _id: id },
-      { $set: { status } },
-      { new: true }
-    )
+
+    updateStatus: async (id, status) => {
+      return Teacher.findOneAndUpdate(
+        { _id: id, collegeId: req.tenantId }, // enforce tenant scope
+        { $set: { status } },
+        { new: true }
+      );
+    }
   };
 }
-
-
