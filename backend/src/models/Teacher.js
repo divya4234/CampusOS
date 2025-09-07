@@ -8,7 +8,8 @@ const TeacherSchema = new mongoose.Schema(
     email: { type: String, required: true },
     subject: { type: String },
     phone: { type: String },
-    passwordHash: { type: String, required: true, select: false }
+    passwordHash: { type: String, required: true, select: false },
+    course: { type: String, required: true },
   },
   { timestamps: true }
 );

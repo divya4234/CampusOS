@@ -44,12 +44,25 @@ export function studentService(req) {
 
     listByYear: (year) => s.find({ year: Number(year) }),
 
+    listByCourse: (course) => s.find({ course }),
+
+    listByGrade: (grade) => s.find({ grade: Number(grade) }),
+
     updateYear: async (id, year) => {
       return Student.findOneAndUpdate(
         { _id: id, collegeId: req.tenantId },
         { $set: { year } },
         { new: true }
       );
+    },
+
+    getCourseById: async (id) => {
+      return s.findOne({ _id: id }, { course: 1, _id: 0 });
+    },
+
+    getGradeById: async (id) => {
+      return s.findOne({ _id: id }, { grade: 1, _id: 0 });
     }
+
   };
 }
