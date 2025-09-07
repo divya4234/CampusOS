@@ -180,35 +180,6 @@ npm install
 npm run dev
 ```
 
-## 📈 Future Roadmap
-
-1. **Q4 2025**
-
-   - Mobile app development
-   - Advanced analytics dashboard
-   - Blockchain certificates
-
-2. **Q1 2026**
-
-   - AI-powered attendance system
-   - Integrated video conferencing
-   - Enhanced security features
-
-3. **Q2 2026**
-   - Multi-language support
-   - Offline capabilities
-   - Cloud deployment options
-
-## 🤝 Contributing
-
-We welcome contributions! See our [Contributing Guide](CONTRIBUTING.md) for details.
-
-## 🏆 Awards & Recognition
-
-- 🥇 Best Education Tech Solution - TechHacks 2025
-- 🏆 Most Innovative Project - College Hackathon 2025
-- 👨‍💻 Featured on GitHub Student Gallery
-
 ## 📚 Documentation
 
 - [API Documentation](./backend/README.md)
