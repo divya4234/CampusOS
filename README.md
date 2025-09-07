@@ -218,8 +218,45 @@ We welcome contributions! See our [Contributing Guide](CONTRIBUTING.md) for deta
 
 ## 👥 Team
 
-- **Divya** - Full Stack Developer & Project Lead
-- [Other team members]
+### Project Leadership
+
+- **Vineeth** - Project Lead & Full Stack Developer
+  - System and Architecture Design
+  - Backend Core Development
+  - Database Design
+  - Authentication Framework
+
+### Frontend Team
+
+- **Naresh** - Frontend Lead
+  - API Integration
+  - Component Architecture
+  - Responsive Design
+  - State Management
+  - Performance Optimization
+
+### Backend Team
+
+- **Divya** - Full Stack Developer
+
+  - API Testing
+  - UI/UX Design
+  - DevOps & Deployment
+  - Authentication System
+  - Real-time Features
+
+- **Blessy** - Full Stack Developer
+
+  - API Testing
+  - UI/UX Design
+  - Authentication System
+  - DevOps & Deployment
+  - Testing & QA
+
+- **Rahul** - Backend Developer
+  - AI Model Development & Integration
+  - System Optimization
+  - Advanced Backend Features
 
 ## 📄 License
 
