@@ -13,8 +13,10 @@ const StudentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// prevent duplicate emails per college
 StudentSchema.index({ collegeId: 1, email: 1 }, { unique: true });
 
+// password methods
 StudentSchema.methods.setPassword = async function (password) {
   this.passwordHash = await bcrypt.hash(password, 10);
 };
@@ -23,6 +25,7 @@ StudentSchema.methods.verifyPassword = async function (password) {
   return bcrypt.compare(password, this.passwordHash);
 };
 
+// enable multi-tenant scoping
 StudentSchema.plugin(tenantPlugin);
 
 export default mongoose.model("Student", StudentSchema);
